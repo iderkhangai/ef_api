@@ -1,3 +1,4 @@
+
 import express from 'express';
 
 export class ErrorHandler extends Error {
@@ -10,11 +11,14 @@ export class ErrorHandler extends Error {
   }
 }
 
-export const handleError = (err: ErrorHandler, res: express.Response): void => {
+export const handleError = (req: express.Request, res: express.Response, err: ErrorHandler): void => {
   const { statusCode, message } = err;
+  const timestamp = new Date().toISOString();
+  const url = req.originalUrl;
   res.status(statusCode).json({
-    status: 'error',
-    statusCode,
+    status: statusCode,
+    timestamp,
+    url,
     message,
   });
 };

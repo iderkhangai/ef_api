@@ -4,31 +4,55 @@ import path from 'path';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import http from 'http';
-
-dotenv.config({ path: path.join(__dirname, '../.env') });
-import { handleError } from './helpers/error';
+import { ErrorHandler, handleError } from './helpers/ErrorHandler';
 import httpLogger from './middlewares/httpLogger';
-import router from './routes/index';
+import router from './routes/programRoutes';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+dotenv.config({ path: path.join(__dirname, '../.env') });
+export const app: express.Application = express();
 
-const app: express.Application = express();
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'EF Program API v1',
+      version: '1.0.0',
+      description: 'EF Program API v1 documentation',
+    },
+  },
+  apis: [
+    `${__dirname}/routes/programRoutes.ts`
+  ],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 app.use(httpLogger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-app.use('/', router);
-
-// catch 404 and forward to error handler
+// app.use(cors());
+// app.use(helmet());
+app.use(express.static(__dirname + '/public'))
+//api program's context url
+app.use('/api/v1/programs', router);
+// Serve index.html as the root page
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+// catch-all route handler for handling 404 errors.
 app.use((_req, _res, next) => {
   next(createError(404));
 });
 
 // error handler
-const errorHandler: express.ErrorRequestHandler = (err, _req, res) => {
-  handleError(err, res);
-};
-app.use(errorHandler);
+app.use((err: ErrorHandler, req: express.Request, res: express.Response) => {
+  handleError(req, res, err);
+});
 
 const port = process.env.PORT || '8000';
 app.set('port', port);
@@ -40,17 +64,6 @@ function onError(error: { syscall: string; code: string }) {
     throw error;
   }
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
 }
 
 function onListening() {
