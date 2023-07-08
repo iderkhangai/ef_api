@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "97d1af4e-52c1-415c-a65f-7d0aa48a2e65",
+		"name": "ef-task-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4760737",
+		"_collection_link": "https://interstellar-crater-1178.postman.co/workspace/spring~7a1fd022-c3d7-4073-b67f-f9852430e5dc/collection/4760737-97d1af4e-52c1-415c-a65f-7d0aa48a2e65?action=share&creator=4760737&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Fetch All programs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "765fa450-8a0c-4f59-a8df-40b96c0cfc8f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "password",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "username",
+						"value": "user",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/programs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find program by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "765fa450-8a0c-4f59-a8df-40b96c0cfc8f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "password",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "username",
+						"value": "user",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/programs/1688846226048",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"programs",
+						"1688846226048"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update program by Id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1688846226048,\r\n    \"title\": \"test\",\r\n    \"topic\": \"change-and-culture\",\r\n    \"learningFormats\": [\r\n        \"1\",\r\n        \"2\",\r\n        \"3\"\r\n    ],\r\n    \"bestseller\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/programs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"programs"
+					],
+					"query": [
+						{
+							"key": "programId",
+							"value": "7",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new program",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"rrr\",\r\n    \"topic\": \"change-and-culture\",\r\n    \"learningFormats\": [\r\n        \"virtual\",\r\n        \"residential\",\r\n        \"blended\",\r\n        \"self-study\"\r\n    ],\r\n    \"bestseller\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/programs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"programs"
+					],
+					"query": [
+						{
+							"key": "programId",
+							"value": "7",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete program by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/programs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"programs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
