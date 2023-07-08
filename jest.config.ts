@@ -4,6 +4,6 @@ module.exports = {
   testMatch: ['**/tests/**/*.test.ts'],
   coveragePathIgnorePatterns: [
     '/node_modules/',
-    '../program-api/src/helpers/ErrorHandler.ts', // Exclude the specific file
+    './src/helpers/ErrorHandler.ts', // Exclude the specific file
   ],
 };
