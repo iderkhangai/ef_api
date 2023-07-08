@@ -1,34 +1,47 @@
-<h1 align="center">Nodejs-Express Typescript Boilerplate</h1>
 
-<p align="center">
-  <b>Build your web servers without spending hours on setting up the project.</b></br>
-  <sub>Made with ❤️ by <a href="https://github.com/abhijeetgurle">Abhijeet</a></sub>
-</p>
+# EF Project API
 
-<br>
+ult/EF specialize in delivering immersive learning programs focused on the most critical global business skills for all levels of employees. Programs are run on a short period and new ones come and go frequently, to help with the maintenance of this, the marketing team would like an admin dashboard to manage program content. As the backend developer on this project you are expected to create an API that will faciliate CRUD requests from the new UI.
 
-## Why I Have Created This?
+## Authors
 
-There are many boilerplates available on the internet which providers a server app with nodejs, express & typescript but I found them either too complex for my use case or too simple where I need to configure lot of features later. So I build this repo to be used in projects which are simple & doesn't require lot of unnecessary tooling.
+- [@iderkhangai](https://www.github.com/iderkhangai)
 
-<br>
 
-## Features
+## Run Locally
 
-- **Simple Code** with no unnecessary dependencies.
-- **JSON & Cookie** parsing support with no need of configurations.
-- **Environment variables** can be easily added in file `.env` using library like [dotenv](https://www.npmjs.com/package/dotenv).
-- **Logging** support using libraries like [winston](https://www.npmjs.com/package/winston) & [morgan](https://www.npmjs.com/package/morgan)
-- **Prettier & ESlint** added so that your code looks & feels consistent.
+Clone the project
 
-<br>
+```bash
+  git clone https://github.com/iderkhangai/ef_api.git
+```
 
-## How To Use It
+Go to the project directory
 
-Download the zip file of this codebase & start writing your APIs 🎉.
+```bash
+  cd ef_api
+```
 
-<br>
+Install dependencies
 
-## License
+```bash
+  npm install
+```
 
-[MIT](/LICENSE)
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Project Structure
+
+- `/src`: Contains the source code files.
+- `/public`: Contains static assets and index page.
+- `/tests`: Contains test files.
+
+
+
+
+Swagger: http://localhost:8000/api-docs/
+
