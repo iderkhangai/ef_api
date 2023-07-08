@@ -2,7 +2,7 @@
 import express from 'express';
 import ProgramsController from '../controllers/ProgramsController';
 import { validateCreateProgram, validateUpdateProgram } from '../helpers/Validator';
-import { authorize } from '../middlewares/authMiddleware';
+// import AuthMiddleware from '../middlewares/authMiddleware'; -- this is for authenticating the routes based on their role
 const router = express.Router();
 /**
  * @swagger
@@ -48,7 +48,7 @@ const router = express.Router();
  *             schema:
  *               $ref: '#/components/schemas/Program'
  */
-router.get('/', ProgramsController.getPrograms, authorize);
+router.get('/', ProgramsController.getPrograms);
 
 /**
  * @swagger
@@ -99,7 +99,7 @@ router.post('/', validateCreateProgram, ProgramsController.createProgram);
  *       404:
  *         description: Program not found
  */
-router.get('/:id', ProgramsController.getProgramById, authorize);
+router.get('/:id', ProgramsController.getProgramById);
 /**
  * @swagger
  * /api/v1/programs:
@@ -131,7 +131,7 @@ router.get('/:id', ProgramsController.getProgramById, authorize);
  *       404:
  *         description: Program not found
  */
-router.patch('/', validateUpdateProgram, ProgramsController.updateProgram, authorize);
+router.patch('/', validateUpdateProgram, ProgramsController.updateProgram);
 /**
  * @swagger
  * /api/v1/programs/{id}:
@@ -152,6 +152,6 @@ router.patch('/', validateUpdateProgram, ProgramsController.updateProgram, autho
  *       404:
  *         description: Program not found
  */
-router.delete('/:id', ProgramsController.deleteProgram, authorize)
+router.delete('/:id', ProgramsController.deleteProgram)
 
 export default router;

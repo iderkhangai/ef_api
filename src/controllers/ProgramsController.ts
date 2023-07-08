@@ -17,7 +17,7 @@ const getPrograms = (req: Request, res: Response) => {
   const programs = programsService.getPrograms(pageNum, pageSize, sortField, sortDirection);
 
   const response = ResponseHelper(ProgramStatus.FOUND, ProgramMessages.FETCHED_SUCCESSFULLY, req.originalUrl);
-  res.json({ ...response, body:programs });
+  res.json({ ...response, body: programs });
 };
 
 const getProgramById = (req: Request, res: Response) => {
@@ -33,8 +33,6 @@ const getProgramById = (req: Request, res: Response) => {
 const createProgram = (req: Request, res: Response) => {
   const newProgram = req.body;
   const errors = validationResult(req);
-  console.log("validate - ", errors);
-  
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
